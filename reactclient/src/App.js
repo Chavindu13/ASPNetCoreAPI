@@ -48,47 +48,49 @@ export default function App() {
       </div>
     </div>
   );
-}
 
-function renderPostsTable() {
-  return (
-    <div className="table-responsive mt-5">
-      <table className="table table-bordered border-dark">
-        <thead>
-          <tr>
-            <th scope="col">PostId (PK)</th>
-            <th scope="col">Title</th>
-            <th scope="col">Content</th>
-            <th scope="col">CRUD Operations</th>
-          </tr>
-        </thead>
-        <tbody>
-            {items.map((item) => (
-              <tr key={item.postId}>
-                <th scope="row">{item.postId}</th>
-                <td>{item.title}</td>
-                <td>{item.content}</td>
-                <td>
-                <button className="btn btn-dark btn-lg mx-3 my-3">Update</button>
-                <button className="btn btn-secondary btn-lg">Delete</button>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-      <button onClick={() => setPosts([])} className="btn btn-dark btn-lg w-100">Empty React posts array</button>
-    </div>
-  );
-}
-
-function onPostCreated(createdPost) {
-  setShowingCreateNewPostForm(false);
-
-  if (createdPost === null) {
-    return;
+  function renderPostsTable() {
+    return (
+      <div className="table-responsive mt-5">
+        <table className="table table-bordered border-dark">
+          <thead>
+            <tr>
+              <th scope="col">PostId (PK)</th>
+              <th scope="col">Title</th>
+              <th scope="col">Content</th>
+              <th scope="col">CRUD Operations</th>
+            </tr>
+          </thead>
+          <tbody>
+              {items.map((item) => (
+                <tr key={item.postId}>
+                  <th scope="row">{item.postId}</th>
+                  <td>{item.title}</td>
+                  <td>{item.content}</td>
+                  <td>
+                  <button className="btn btn-dark btn-lg mx-3 my-3">Update</button>
+                  <button className="btn btn-secondary btn-lg">Delete</button>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+        <button onClick={() => setPosts([])} className="btn btn-dark btn-lg w-100">Empty React posts array</button>
+      </div>
+    );
   }
-
-  alert(`Post successfully created. After clicking OK, your new post tilted "${createdPost.title}" will show up in the table below.`);
-
-  getPosts();
+  
+  function onPostCreated(createdPost) {
+    setShowingCreateNewPostForm(false);
+  
+    if (createdPost === null) {
+      return;
+    }
+  
+    alert(`Post successfully created. After clicking OK, your new post tilted "${createdPost.title}" will show up in the table below.`);
+  
+    getPosts();
+  }
 }
+
+
