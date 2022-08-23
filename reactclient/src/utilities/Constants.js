@@ -1,4 +1,4 @@
-const API_BASE_URL_DEVELOPMENT = 'https://localhost:44393/api';
+const API_BASE_URL_DEVELOPMENT = 'https://aspnetserverreactapi.azurewebsites.net/api';
 const API_BASE_URL_PRODUCTION = 'https://aspnetserverreactapi.azurewebsites.net/api';
 
 const ENDPOINTS = {
