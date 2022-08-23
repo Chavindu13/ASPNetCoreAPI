@@ -1,12 +1,12 @@
 const API_BASE_URL_DEVELOPMENT = 'https://localhost:44393/api';
-const API_BASE_URL_PRODUCTION = '';
+const API_BASE_URL_PRODUCTION = 'https://aspnetserverreactapi.azurewebsites.net/api';
 
 const ENDPOINTS = {
     GET_ALL_POSTS: 'Post',
     GET_POST_BY_ID: 'get-post-by-id',
     CREATE_POST: 'Post',
-    UPDATE_POST: 'update-post',
-    DELETE_POST_BY_ID: 'delete-post-by-id'
+    UPDATE_POST: 'Post',
+    DELETE_POST_BY_ID: 'Post'
 };
 
 const development = {

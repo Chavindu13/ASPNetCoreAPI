@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using aspnetserver.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using MediatR;
+using System.Reflection;
 
 namespace aspnetserver
 {
@@ -29,6 +31,7 @@ namespace aspnetserver
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddDbContext<PostsContext>(options =>
             options.UseSqlite("Data Source=./Data/AppDB.db"));
             services.AddCors(options =>

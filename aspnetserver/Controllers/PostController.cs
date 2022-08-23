@@ -46,5 +46,49 @@ namespace aspnetserver.Controllers
             await _context.SaveChangesAsync();
             return CreatedAtAction("GetPostDetail", new { id = Post.PostId }, Post);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePostDetail(int id)
+        {
+            var postDetail = await _context.Posts.FirstOrDefaultAsync(post => post.PostId == id); ;
+            if (postDetail == null)
+            {
+                return NotFound();
+            }
+
+            _context.Posts.Remove(postDetail);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> PutPostDetail(Post Post)
+        {
+            _context.Entry(Post).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                if (!PostDetailExists(Post.PostId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        private bool PostDetailExists(int id)
+        {
+            return _context.Posts.Any(e => e.PostId == id);
+        }
     }
 }
